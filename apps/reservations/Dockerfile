@@ -1,7 +1,6 @@
 FROM node:alpine As development
 
-WORKDIR /D://nestjs/microservice-project
-
+WORKDIR /d/Programming/Projects/sleeper
 COPY package.json ./
 COPY pnpm-lock.yaml ./
 
@@ -18,7 +17,7 @@ FROM node:alpine as production
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 
-WORKDIR /D://nestjs/microservice-project
+WORKDIR /d/Programming/Projects/sleeper
 
 COPY package.json ./
 COPY pnpm-lock.yaml ./

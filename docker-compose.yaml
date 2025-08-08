@@ -1,0 +1,5 @@
+services:
+  reservations:
+    build:
+      context: .
+      dockerfile: /D://nestjs/microservice-project
