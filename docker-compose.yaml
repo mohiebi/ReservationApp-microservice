@@ -2,6 +2,13 @@ services:
   reservations:
     build:
       context: .
-      dockerfile: /d/Programming/Projects/sleeper
+      dockerfile: ./apps/reservations/dockerfile
       target: development
-      command:
+    command: pnpm run start:dev reservations
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app:delegated
+      - /usr/src/app/node_modules
+  mongo:
+    image: mongo
