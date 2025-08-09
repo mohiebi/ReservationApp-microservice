@@ -2,4 +2,6 @@ services:
   reservations:
     build:
       context: .
-      dockerfile: /D://nestjs/microservice-project
+      dockerfile: /d/Programming/Projects/sleeper
+      target: development
+      command:
