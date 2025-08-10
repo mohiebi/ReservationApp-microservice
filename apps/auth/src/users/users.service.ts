@@ -2,6 +2,8 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersRepository } from './users.repository';
 import * as bcrypt from 'bcryptjs'
+import { GetUserDto } from './dto/get-user.dto';
+import { UsersDocument } from './Models/UsersSchema';
 
 @Injectable()
 export class UsersService {
@@ -13,6 +15,7 @@ export class UsersService {
             password: await bcrypt.hash(createUserDto.password, 10),
         });
     }
+
     async varifyUser(email: string, password: string) {
         const user = await this.usersRepository.findOne({ email });
         const passwordIsValid = await bcrypt.compare(password, user.password);
@@ -22,5 +25,9 @@ export class UsersService {
         }
 
         return user;
+    }
+
+    async getUser(getUserDto: GetUserDto) {
+        return this.usersRepository.findOne(getUserDto);
     }
 }
