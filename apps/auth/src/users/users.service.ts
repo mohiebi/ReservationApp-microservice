@@ -10,6 +10,7 @@ export class UsersService {
     constructor(private readonly usersRepository: UsersRepository) { }
 
     async create(createUserDto: CreateUserDto) {
+        await this.validateCreateUserDto(createUserDto);
         return this.usersRepository.create({
             ...createUserDto,
             password: await bcrypt.hash(createUserDto.password, 10),
@@ -29,5 +30,14 @@ export class UsersService {
 
     async getUser(getUserDto: GetUserDto) {
         return this.usersRepository.findOne(getUserDto);
+    }
+
+    private async validateCreateUserDto(createUserDto: CreateUserDto) {
+        try {
+            await this.usersRepository.findOne({ email: createUserDto.email });
+        } catch (err) {
+            return
+        }
+        throw new UnauthorizedException('Email already exists!')
     }
 }
