@@ -7,7 +7,7 @@ import { ReservationDocument, ReservationSchema } from './models/reservation.sch
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from 'joi';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { AUTH_SERVICE } from '@app/common/Constants/services';
+import { AUTH_SERVICE } from '@app/common/constants/services';
 
 @Module({
   imports: [
