@@ -10,8 +10,7 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - .:/usr/src/app:delegated
-      - /usr/src/app/node_modules
+      - .:/usr/src/app
   auth:
     build:
       context: .
@@ -23,8 +22,7 @@ services:
     ports:
       - '3001:3001'
     volumes:
-      - .:/usr/src/app:delegated
-      - /usr/src/app/node_modules
+      - .:/usr/src/app
 
   mongo:
     image: mongo
