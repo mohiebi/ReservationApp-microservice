@@ -7,7 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from 'joi';
 import { JwtModule } from '@nestjs/jwt';
 import { LocalStrategy } from './Strategies/local.strategy';
-import { JwtStrategy } from './Strategies/jwtstrategy';
+import { JwtStrategy } from './Strategies/jwt.strategy';
 
 @Module({
   imports: [
