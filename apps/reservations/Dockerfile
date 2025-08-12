@@ -10,7 +10,7 @@ RUN npm install -g pnpm && \
 
 COPY . .
 
-RUN pnpm run build
+CMD ["pnpm", "run", "start:dev"]
 
 # ===== PRODUCTION =====
 FROM node:20-alpine AS production
@@ -24,7 +24,9 @@ COPY package.json pnpm-lock.yaml ./
 RUN npm install -g pnpm && \
     pnpm install --frozen-lockfile --prod
 
-COPY --from=development /usr/src/app/dist ./dist
+COPY . . 
+
+RUN pnpm run build
 
 # Run your NestJS microservice
-CMD ["node", "dist/apps/reservations/main.js"]
+CMD ["pnpm", "run", "start:prod"]
