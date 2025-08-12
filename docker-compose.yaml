@@ -2,7 +2,7 @@ services:
   reservations:
     build:
       context: .
-      dockerfile: ./apps/reservations/dockerfile
+      dockerfile: ./apps/reservations/Dockerfile
       target: development
     command: pnpm run start:dev reservations
     env_file:
@@ -11,10 +11,14 @@ services:
       - '3000:3000'
     volumes:
       - .:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - mongo
+
   auth:
     build:
       context: .
-      dockerfile: ./apps/auth/dockerfile
+      dockerfile: ./apps/auth/Dockerfile
       target: development
     command: pnpm run start:dev auth
     env_file:
@@ -23,6 +27,9 @@ services:
       - '3001:3001'
     volumes:
       - .:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - mongo
 
   mongo:
     image: mongo
