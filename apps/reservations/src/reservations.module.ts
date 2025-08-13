@@ -22,7 +22,6 @@ import { AUTH_SERVICE } from '@app/common/constants/services';
       validationSchema: Joi.object({
         MONGODB_URI: Joi.string().required(),
         HTTP_PORT: Joi.number().required(),
-        HTTP_TCP: Joi.number().required(),
       }),
     }),
     ClientsModule.registerAsync([
@@ -32,11 +31,11 @@ import { AUTH_SERVICE } from '@app/common/constants/services';
           transport: Transport.TCP,
           options: {
             host: configService.get('AUTH_HOST'),
-            port: configService.get('AUTH_PORT')
-          }
+            port: configService.get('AUTH_PORT'),
+          },
         }),
         inject: [ConfigService],
-      }
+      },
     ]),
   ],
   controllers: [ReservationsController],

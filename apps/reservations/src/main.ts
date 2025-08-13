@@ -6,7 +6,6 @@ import { ConfigService } from '@nestjs/config';
 import * as cookieParser from 'cookie-parser'
 
 async function bootstrap() {
-  console.log("test");
   const app = await NestFactory.create(ReservationsModule);
   app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe({
@@ -14,6 +13,6 @@ async function bootstrap() {
   }));
   app.useLogger(app.get(Logger));
   const configService = app.get(ConfigService);
-  await app.listen(configService.get('PORT') ?? 3000);
+  await app.listen(configService.get('HTTP_PORT') ?? 3000);
 }
 bootstrap();
