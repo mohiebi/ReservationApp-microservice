@@ -10,7 +10,7 @@ RUN npm install -g pnpm && \
 
 COPY . .
 
-CMD ["pnpm", "run", "start:dev"]
+CMD ["pnpm", "run", "start:dev:reservations"]
 
 # ===== PRODUCTION =====
 FROM node:20-alpine AS production
