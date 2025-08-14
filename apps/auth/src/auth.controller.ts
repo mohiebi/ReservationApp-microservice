@@ -23,7 +23,7 @@ export class AuthController {
 
   @UseGuards(JwtAuthGuard)
   @MessagePattern('authenticate')
-  async athenticate(@Payload() data: any) {
-    return data.user;
+  async authenticate(@Payload() data: any) {
+    console.log(data);
   }
 }
