@@ -12,6 +12,7 @@
     "start:dev": "nest start --watch",
     "start:dev:auth": "nest start auth --watch",
     "start:dev:reservations": "nest start reservations --watch",
+    "start:dev:payments": "nest start payments --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/apps/sleeper/main",
     "start:prod auth": "node dist/apps/auth/main",
