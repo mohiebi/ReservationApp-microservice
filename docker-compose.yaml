@@ -40,7 +40,7 @@ services:
     env_file:
       - ./apps/payments/.env
     ports:
-      - '3001:3001'
+      - '3003:3003'
       # volumes:
       # - .:/usr/src/app
       #   - /usr/src/app/node_modules
