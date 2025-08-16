@@ -2,12 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { number } from 'joi';
 import Stripe from 'stripe';
+import { createChargeDto } from './dto/create-charge.dto';
 
 @Injectable()
 export class PaymentsService {
   private readonly stripe: Stripe;
 
-  constructor(private readonly configService : ConfigService){
+  constructor(private readonly configService: ConfigService) {
     this.stripe = new Stripe(
       this.configService.get<string>('STRIPE_SECRET')!,
       {
@@ -16,7 +17,7 @@ export class PaymentsService {
     );
   }
 
-  async createCharge(card: Stripe.PaymentMethodCreateParams.Card, amount: number) {
+  async createCharge({ card, amount }: createChargeDto) {
     const paymentMethod = await this.stripe.paymentMethods.create({
       type: 'card',
       card,
