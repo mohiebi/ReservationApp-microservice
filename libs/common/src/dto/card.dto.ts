@@ -1,6 +1,6 @@
 import { IsCreditCard, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
-export class CartDto {
+export class CardDto {
     @IsString()
     @IsNotEmpty()
     cvc: string;
@@ -19,4 +19,7 @@ export class CartDto {
 
     @IsString()
     token?: string;
+
+    @IsString()
+    networks?: {preferred:string};
 }
